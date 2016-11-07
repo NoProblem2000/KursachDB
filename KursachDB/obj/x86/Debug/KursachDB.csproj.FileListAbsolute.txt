@@ -1,0 +1,8 @@
+c:\users\гость\documents\visual studio 2010\Projects\KursachDB\KursachDB\bin\Debug\KursachDB.exe
+c:\users\гость\documents\visual studio 2010\Projects\KursachDB\KursachDB\bin\Debug\KursachDB.pdb
+c:\users\гость\documents\visual studio 2010\Projects\KursachDB\KursachDB\obj\x86\Debug\KursachDB.Form1.resources
+c:\users\гость\documents\visual studio 2010\Projects\KursachDB\KursachDB\obj\x86\Debug\KursachDB.Properties.Resources.resources
+c:\users\гость\documents\visual studio 2010\Projects\KursachDB\KursachDB\obj\x86\Debug\KursachDB.csproj.GenerateResource.Cache
+c:\users\гость\documents\visual studio 2010\Projects\KursachDB\KursachDB\obj\x86\Debug\KursachDB.exe
+c:\users\гость\documents\visual studio 2010\Projects\KursachDB\KursachDB\obj\x86\Debug\KursachDB.pdb
+C:\Users\Гость\Documents\Visual Studio 2010\Projects\KursachDB\KursachDB\obj\x86\Debug\KursachDB.Select.resources
