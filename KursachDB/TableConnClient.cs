@@ -4,16 +4,16 @@ using MySql.Data.MySqlClient;
 
 namespace KursachDB
 {
-    class TableClient : IChangeDataBase
+    class TableConnClient:IChangeDataBase
     {
-        Select sel;
-        public TableClient(Select sel)
+         Select sel;
+        public TableConnClient(Select sel)
         {
             this.sel = sel;
         }
         public MySqlConnection conn;
 
-        public TableClient(){}
+        public TableConnClient(){}
 
         public void Connect()
         {
@@ -26,12 +26,12 @@ namespace KursachDB
         public void Select()
         {
             Connect();
-            string stm = "SELECT * FROM tableClient";
+            string stm = "SELECT * FROM tableConnClient";
             MySqlDataAdapter mAdapter = new MySqlDataAdapter(stm, conn);
             MySqlCommandBuilder mScomBuild = new MySqlCommandBuilder(mAdapter);
             DataSet data = new DataSet();
-            mAdapter.Fill(data, "tableClient");
-            sel.dataGridView1.DataSource = data.Tables["tableClient"];
+            mAdapter.Fill(data, "tableConnClient");
+            sel.dataGridView1.DataSource = data.Tables["tableConnClient"];
 
             conn.Close();
         }
@@ -42,22 +42,18 @@ namespace KursachDB
             var cmd = new MySqlCommand
             {
                 Connection = conn,
-                CommandText = @"INSERT INTO tableClient(idClient, firstNameClient, secondNameClient, mail, country, city, street, house, flat)
-                              VALUES(@idClient, @firstNameClient, @secondNameClient, @mail, @country, @city, @street, @house, @flat)"
+                CommandText = @"INSERT INTO tableConnClient(idOrder, tableAccessory_idAccessory, tableGames_idGame, tableClient_idClient, tableWorkers_idWorker)
+                              VALUES(@idOrder, @tableAccessory_idAccessory, @tableGames_idGame, @tableClient_idClient, @tableWorkers_idWorker)"
             };
-            cmd.Parameters.AddWithValue("@idClient", list[0]);
-            cmd.Parameters.AddWithValue("@firstNameClient", list[1]);
-            cmd.Parameters.AddWithValue("@secondNameClient", list[2]);
-            cmd.Parameters.AddWithValue("@mail", list[3]);
-            cmd.Parameters.AddWithValue("@country", list[4]);
-            cmd.Parameters.AddWithValue("@city", list[5]);
-            cmd.Parameters.AddWithValue("@street", list[6]);
-            cmd.Parameters.AddWithValue("@house", list[7]);
-            cmd.Parameters.AddWithValue("@flat", list[8]);
+            cmd.Parameters.AddWithValue("@idOrder", list[0]);
+            cmd.Parameters.AddWithValue("@tableAccessory_idAccessory", list[1]);
+            cmd.Parameters.AddWithValue("@tableGames_idGame", list[2]);
+            cmd.Parameters.AddWithValue("@tableClient_idClient", list[3]);
+            cmd.Parameters.AddWithValue("@tableWorkers_idWorker", list[4]);
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-
+       
         public void Update()
         {
             throw new System.NotImplementedException();

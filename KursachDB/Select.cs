@@ -64,6 +64,18 @@ namespace KursachDB
                         tableAccessory.Select();
                         break;
                     }
+                    case "6":
+                    {
+                        TableConnClient tableConnClient = new TableConnClient(this);
+                        tableConnClient.Select();
+                        break;
+                    }
+                    case "7":
+                    {
+                        TableConnSup tableConnSup = new TableConnSup(this);
+                        tableConnSup.Select();
+                        break;
+                    }
                 }
             }
 

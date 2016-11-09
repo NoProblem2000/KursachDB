@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using MySql.Data.MySqlClient;
 
 namespace KursachDB
@@ -11,6 +12,9 @@ namespace KursachDB
             this.sel = sel;
         }
         public MySqlConnection conn;
+
+        public TableAccessory(){}
+
         public void Connect()
         {
             const string cs = @"server=localhost;userid=root;password=1;database=lab1DB;CharSet=utf8;";
@@ -32,9 +36,20 @@ namespace KursachDB
             conn.Close();
         }
 
-        public void Insert()
+        public void Insert(List<string> list)
         {
-            throw new System.NotImplementedException();
+            Connect();
+            var cmd = new MySqlCommand
+            {
+                Connection = conn,
+                CommandText = @"INSERT INTO tableAccessory(idAccessory, nameAccessory, price)
+                              VALUES(@idAccessory, @nameAccessory, @price)"
+            };
+            cmd.Parameters.AddWithValue("@idAccessory", list[0]);
+            cmd.Parameters.AddWithValue("@nameAccessory", list[1]);
+            cmd.Parameters.AddWithValue("@price", list[2]);
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void Update()

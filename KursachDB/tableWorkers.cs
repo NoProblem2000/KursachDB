@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using MySql.Data.MySqlClient;
 
 namespace KursachDB
@@ -12,6 +13,9 @@ namespace KursachDB
             this.sel = sel;
         }
         public MySqlConnection conn;
+
+        public TableWorkers(){}
+
         public void Connect()
         {
             const string cs = @"server=localhost;userid=root;password=1;database=lab1DB;CharSet=utf8;";
@@ -33,9 +37,37 @@ namespace KursachDB
             conn.Close();
         }
 
-        public void Insert()
+        public void Insert(List<string> list)
         {
-            throw new System.NotImplementedException();
+            Connect();
+            var cmd = new MySqlCommand
+            {
+                Connection = conn,
+                CommandText = @"INSERT INTO tableWorkers(idWorker, firstNameWorker, secondNameWorker, mail, telephone)
+                              VALUES(@idWorker, @firstNameWorker, @secondNameWorker, @mail, @telephone)"
+            };
+            cmd.Parameters.AddWithValue("@idWorker", list[0]);
+            cmd.Parameters.AddWithValue("@firstNameWorker", list[1]);
+            cmd.Parameters.AddWithValue("@secondNameWorker", list[2]);
+            cmd.Parameters.AddWithValue("@mail", list[3]);
+            cmd.Parameters.AddWithValue("@telephone", list[4]);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            
+            Connect();
+            var cmd2 = new MySqlCommand
+            {
+                Connection = conn,
+                CommandText = @"INSERT INTO tableConnSup (idOrder, tableGames_idGame, tableAccessory_idAccessory, tableSupplier_idSupplier, tableWorkers_idWorker)
+                                VALUES(@idOrder, @tableGames_idGame, @tableAccessory_idAccessory, @tableSupplier_idSupplier,@tableWorkers_idWorker )"
+            };
+            cmd2.Parameters.AddWithValue("@idOrder", list[5]);
+            cmd2.Parameters.AddWithValue("@tableGames_idGame", list[7]);
+            cmd2.Parameters.AddWithValue("@tableAccessory_idAccessory", list[8]);
+            cmd2.Parameters.AddWithValue("@tableSupplier_idSupplier", list[6]);
+            cmd2.Parameters.AddWithValue("@tableWorkers_idWorker", list[0]);
+            cmd2.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void Update()

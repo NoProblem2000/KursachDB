@@ -4,16 +4,16 @@ using MySql.Data.MySqlClient;
 
 namespace KursachDB
 {
-    class TableGames : IChangeDataBase
+    class TableConnSup:IChangeDataBase
     {
         Select sel;
-        public TableGames(Select sel)
+        public TableConnSup(Select sel)
         {
             this.sel = sel;
         }
         public MySqlConnection conn;
 
-        public TableGames(){}
+        public TableConnSup(){}
 
         public void Connect()
         {
@@ -26,33 +26,19 @@ namespace KursachDB
         public void Select()
         {
             Connect();
-            string stm = "SELECT * FROM tableGames";
+            string stm = "SELECT * FROM tableConnSup";
             MySqlDataAdapter mAdapter = new MySqlDataAdapter(stm, conn);
             MySqlCommandBuilder mScomBuild = new MySqlCommandBuilder(mAdapter);
             DataSet data = new DataSet();
-            mAdapter.Fill(data, "tableGames");
-            sel.dataGridView1.DataSource = data.Tables["tableGames"];
+            mAdapter.Fill(data, "tableConnSup");
+            sel.dataGridView1.DataSource = data.Tables["tableConnSup"];
 
             conn.Close();
         }
 
         public void Insert(List<string> list )
         {
-            Connect();
-            var cmd = new MySqlCommand
-            {
-                Connection = conn,
-                CommandText = @"INSERT INTO tableGames(idGame, nameGame, price, typeGame, colPlayers, timeGame)
-                              VALUES(@idGame, @nameGame, @price, @typeGame, @colPlayers, @timeGame)"
-            };
-            cmd.Parameters.AddWithValue("@idGame", list[0]);
-            cmd.Parameters.AddWithValue("@nameGame", list[1]);
-            cmd.Parameters.AddWithValue("@price", list[2]);
-            cmd.Parameters.AddWithValue("@typeGame", list[3]);
-            cmd.Parameters.AddWithValue("@colPlayers", list[4]);
-            cmd.Parameters.AddWithValue("@timeGame", list[5]);
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            throw new System.NotImplementedException();
         }
 
         public void Update()
