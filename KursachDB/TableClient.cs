@@ -75,9 +75,17 @@ namespace KursachDB
             conn.Close();
         }
 
-        public void Delete()
+        public void Delete(string delId)
         {
-            throw new System.NotImplementedException();
+            var cmd = new MySqlCommand
+            {
+                Connection = conn,
+                CommandText = @"DELETE FROM tableClient 
+                                WHERE idClient = @idClient"
+            };
+            cmd.Parameters.AddWithValue("@idClient", delId);
+            cmd.ExecuteNonQuery();
+            conn.Close();   
         }
 
         public void SelectFields()

@@ -8,7 +8,7 @@ namespace KursachDB
         void Select();
         void Insert(List<string> list);
         void Update(List<string> list);
-        void Delete();
+        void Delete(string delId);
         void SelectFields();
     }
 }
