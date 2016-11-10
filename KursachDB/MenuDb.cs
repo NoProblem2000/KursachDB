@@ -6,6 +6,7 @@ namespace KursachDB
     {
         Select frm2;
         Insert frm3;
+        Update frm4;
         public Form1()
         {
             InitializeComponent();
@@ -25,7 +26,8 @@ namespace KursachDB
 
         private void UpdateBtn_Click(object sender, System.EventArgs e)
         {
-
+            frm4 = new Update();
+            frm4.Show();
         }
 
         private void DeleteBtn_Click(object sender, System.EventArgs e)

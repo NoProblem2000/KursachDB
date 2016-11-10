@@ -182,7 +182,8 @@ namespace KursachDB
                             #region TableConnClient
 
                             if (textBox1.Text == string.Empty || textBox2.Text == string.Empty ||
-                            textBox3.Text == string.Empty)
+                            textBox3.Text == string.Empty || textBox4.Text == string.Empty
+                                || textBox5.Text == string.Empty)
                             {
                                 MessageBox.Show(@"Вы заполнили не все поля", @"Ошибка!!!");
                             }
@@ -190,7 +191,7 @@ namespace KursachDB
                             {
                                 var listObjects = new List<TextBox>()
                             {
-                                textBox1, textBox2, textBox3
+                                textBox1, textBox2, textBox3,textBox4,textBox5
 
                             };
                                 var listData = listObjects.Select(t => t.Text).ToList();

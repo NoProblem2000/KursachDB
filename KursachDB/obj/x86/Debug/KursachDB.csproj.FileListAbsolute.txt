@@ -7,3 +7,4 @@ c:\users\гость\documents\visual studio 2010\Projects\KursachDB\KursachDB\ob
 c:\users\гость\documents\visual studio 2010\Projects\KursachDB\KursachDB\obj\x86\Debug\KursachDB.pdb
 C:\Users\Гость\Documents\Visual Studio 2010\Projects\KursachDB\KursachDB\obj\x86\Debug\KursachDB.Select.resources
 C:\Users\Гость\Documents\Visual Studio 2010\Projects\KursachDB\KursachDB\obj\x86\Debug\KursachDB.Insert.resources
+C:\Users\Гость\Documents\Visual Studio 2010\Projects\KursachDB\KursachDB\obj\x86\Debug\KursachDB.Update.resources

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 
 namespace KursachDB
@@ -58,9 +59,20 @@ namespace KursachDB
             conn.Close();
         }
 
-        public void Update()
+        public void Update(List<string> list )
         {
-            throw new System.NotImplementedException();
+            Connect();
+            var cmd = new MySqlCommand
+            {
+                Connection = conn,
+                CommandText = @"UPDATE tableSupplier SET focalPerson = @focalPerson, telephone = @telephone
+                                WHERE idSupplier = @idSupplier"
+            };
+            cmd.Parameters.AddWithValue("@idSupplier", list[0]);
+            cmd.Parameters.AddWithValue("@focalPerson",list[1]);
+            cmd.Parameters.AddWithValue("@telephone",list[2]);
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void Delete()

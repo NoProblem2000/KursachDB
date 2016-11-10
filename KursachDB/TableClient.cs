@@ -58,9 +58,21 @@ namespace KursachDB
             conn.Close();
         }
 
-        public void Update()
+        public void Update(List<string> list)
         {
-            throw new System.NotImplementedException();
+            var cmd = new MySqlCommand
+            {
+                Connection = conn,
+                CommandText = @"UPDATE tableClient SET secondNameClient = @secondNameClient,street = @street,house = @house, flat = @flat 
+                                WHERE idClient = @idClient"
+            };
+            cmd.Parameters.AddWithValue("@idClient", list[0]);
+            cmd.Parameters.AddWithValue("@secondNameClient", list[1]);
+            cmd.Parameters.AddWithValue("@street", list[2]);
+            cmd.Parameters.AddWithValue("@house", list[3]);
+            cmd.Parameters.AddWithValue("@flat", list[4]);
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void Delete()

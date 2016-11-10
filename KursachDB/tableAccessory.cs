@@ -52,9 +52,19 @@ namespace KursachDB
             conn.Close();
         }
 
-        public void Update()
+        public void Update(List<string> list)
         {
-            throw new System.NotImplementedException();
+            Connect();
+            var cmd = new MySqlCommand
+            {
+                Connection = conn,
+                CommandText = @"UPDATE tableAccessory SET price = @price
+                                WHERE idAccessory = @idAccessory"
+            };
+            cmd.Parameters.AddWithValue("@idAccessory", list[0]);
+            cmd.Parameters.AddWithValue("@price", list[1]);
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void Delete()

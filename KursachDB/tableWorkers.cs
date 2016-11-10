@@ -70,9 +70,20 @@ namespace KursachDB
             conn.Close();
         }
 
-        public void Update()
+        public void Update(List<string> list)
         {
-            throw new System.NotImplementedException();
+            Connect();
+            var cmd = new MySqlCommand
+            {
+                Connection = conn,
+                CommandText = @"UPDATE tableWorkers SET secondNameWorker = @secondNameWorker,telephone = @telephone
+                                WHERE idWorker = @idWorker"
+            };
+            cmd.Parameters.AddWithValue("@idWorker", list[0]);
+            cmd.Parameters.AddWithValue("@secondNameWorker", list[1]);
+            cmd.Parameters.AddWithValue("@telephone", list[2]);
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void Delete()
