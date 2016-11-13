@@ -100,9 +100,22 @@ namespace KursachDB
             conn.Close();
         }
 
-        public void SelectFields()
+        public void SelectFields(string filterRow)
         {
-            throw new System.NotImplementedException();
+            Connect();
+            string stm = @"SELECT * FROM tableWorkers
+                           WHERE secondNameWorker = @secondNameWorker
+                           ORDER BY telephone";
+            MySqlCommand cmd = new MySqlCommand(stm, conn);
+            cmd.Parameters.AddWithValue("@secondNameWorker", filterRow);
+            MySqlDataAdapter mAdapter = new MySqlDataAdapter();
+            mAdapter.SelectCommand = cmd;
+            MySqlCommandBuilder mScomBuild = new MySqlCommandBuilder(mAdapter);
+            DataSet data = new DataSet();
+            mAdapter.Fill(data, "tableWorkers");
+            sel.dataGridView1.DataSource = data.Tables[0];
+
+            conn.Close();
         }
     }
 }

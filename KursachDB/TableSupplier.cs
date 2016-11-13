@@ -89,9 +89,22 @@ namespace KursachDB
             conn.Close();
         }
 
-        public void SelectFields()
+        public void SelectFields(string filterRow)
         {
-            throw new System.NotImplementedException();
+            Connect();
+            string stm = @"SELECT * FROM tableSupplier
+                           WHERE NameRefinery = @NameRefinery
+                           ORDER BY focalPerson";
+            MySqlCommand cmd = new MySqlCommand(stm, conn);
+            cmd.Parameters.AddWithValue("@NameRefinery", filterRow);
+            MySqlDataAdapter mAdapter = new MySqlDataAdapter();
+            mAdapter.SelectCommand = cmd;
+            MySqlCommandBuilder mScomBuild = new MySqlCommandBuilder(mAdapter);
+            DataSet data = new DataSet();
+            mAdapter.Fill(data, "tableSupplier");
+            sel.dataGridView1.DataSource = data.Tables[0];
+
+            conn.Close();
         }
     }
 }

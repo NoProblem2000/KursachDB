@@ -88,9 +88,22 @@ namespace KursachDB
             conn.Close();   
         }
 
-        public void SelectFields()
+        public void SelectFields(string filterRow)
         {
-            throw new System.NotImplementedException();
+            Connect();
+            string stm = @"SELECT * FROM tableClient
+                           WHERE secondNameClient = @secondNameClient
+                           ORDER BY country";
+            MySqlCommand cmd = new MySqlCommand(stm, conn);
+            cmd.Parameters.AddWithValue("@secondNameClient", filterRow);
+            MySqlDataAdapter mAdapter = new MySqlDataAdapter();
+            mAdapter.SelectCommand = cmd;
+            MySqlCommandBuilder mScomBuild = new MySqlCommandBuilder(mAdapter);
+            DataSet data = new DataSet();
+            mAdapter.Fill(data, "tableClient");
+            sel.dataGridView1.DataSource = data.Tables[0];
+
+            conn.Close();
         }
     }
 }

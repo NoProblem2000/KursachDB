@@ -61,11 +61,11 @@ namespace KursachDB
             var cmd = new MySqlCommand
             {
                 Connection = conn,
-                CommandText = @"UPDATE tableGames SET price = @prise
+                CommandText = @"UPDATE tableGames SET price = @priсe
                                 WHERE idGame = @idGame"
             };
             cmd.Parameters.AddWithValue("@idGame", list[0]);
-            cmd.Parameters.AddWithValue("@prise", list[1]);
+            cmd.Parameters.AddWithValue("@priсe", list[1]);
             cmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -84,9 +84,35 @@ namespace KursachDB
             conn.Close();
         }
 
-        public void SelectFields()
+        public void SelectFields(string filterRow)
         {
-            throw new System.NotImplementedException();
+            Connect();
+            string stm = @"SELECT * FROM tableGames
+                           WHERE nameGame = @nameGame
+                           ORDER BY price";
+            MySqlCommand cmd = new MySqlCommand(stm, conn);
+            cmd.Parameters.AddWithValue("@nameGame", filterRow);
+            MySqlDataAdapter mAdapter = new MySqlDataAdapter();
+            mAdapter.SelectCommand = cmd;
+            MySqlCommandBuilder mScomBuild = new MySqlCommandBuilder(mAdapter);
+            DataSet data = new DataSet();
+            mAdapter.Fill(data, "tableGames");
+            sel.dataGridView1.DataSource = data.Tables[0];
+
+            conn.Close();
+        }
+
+        public void SelectViews()
+        {
+            Connect();
+            string stm = "SELECT * FROM view1";
+            MySqlDataAdapter mAdapter = new MySqlDataAdapter(stm, conn);
+            MySqlCommandBuilder mScomBuild = new MySqlCommandBuilder(mAdapter);
+            DataSet data = new DataSet();
+            mAdapter.Fill(data, "view1");
+            sel.dataGridView1.DataSource = data.Tables["view1"];
+
+            conn.Close();
         }
     }
 }

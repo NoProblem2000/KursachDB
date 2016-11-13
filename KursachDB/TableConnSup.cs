@@ -73,7 +73,7 @@ namespace KursachDB
             conn.Close();
         }
 
-        public void SelectFields()
+        public void SelectFields(string filterRow)
         {
             throw new System.NotImplementedException();
         }

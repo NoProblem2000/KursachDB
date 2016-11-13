@@ -37,6 +37,7 @@ namespace KursachDB
                     {
                         TableSupplier tableSupplier = new TableSupplier(this);
                         tableSupplier.Select();
+                        label2.Text = "Название завода";
                         break;
                     }
 
@@ -44,24 +45,28 @@ namespace KursachDB
                     {
                         TableGames tableGames = new TableGames(this);
                         tableGames.Select();
+                        label2.Text = "Название игры";
                         break;
                     }
                     case "3":
                     {
                         TableWorkers tableWorkers = new TableWorkers(this);
                         tableWorkers.Select();
+                        label2.Text = "Фамилия работника";
                         break;
                     }
                     case "4":
                     {
                         TableClient tableClient = new TableClient(this);
                         tableClient.Select();
+                        label2.Text = "Фамилия клиента";
                         break;
                     }
                     case "5":
                     {
                         TableAccessory tableAccessory = new TableAccessory(this);
                         tableAccessory.Select();
+                        label2.Text = "Название аксессуара";
                         break;
                     }
                     case "6":
@@ -76,9 +81,59 @@ namespace KursachDB
                         tableConnSup.Select();
                         break;
                     }
+                    case "View1":
+                    {
+                        TableGames tableGames = new TableGames();
+                        tableGames.SelectViews();
+                        break;
+                    }
+                    case "View2":
+                    {
+                        TableConnClient tableConnClient = new TableConnClient();
+                        tableConnClient.SelectView();
+                        break;
+                    }
                 }
             }
 
+        }
+
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            switch (cmbxTables.Text)
+            {
+                case "1":
+                {
+                    TableSupplier tableSupplier = new TableSupplier(this);
+                    tableSupplier.SelectFields(textBox1.Text);
+                    break;
+                }
+
+                case "2":
+                {
+                    TableGames tableGames = new TableGames(this);
+                    tableGames.SelectFields(textBox1.Text);
+                    break;
+                }
+                case "3":
+                {
+                    TableWorkers tableWorkers = new TableWorkers(this);
+                    tableWorkers.SelectFields(textBox1.Text);
+                    break;
+                }
+                case "4":
+                {
+                    TableClient tableClient = new TableClient(this);
+                    tableClient.SelectFields(textBox1.Text);
+                    break;
+                }
+                case "5":
+                {
+                    TableAccessory tableAccessory = new TableAccessory(this);
+                    tableAccessory.SelectFields(textBox1.Text);
+                    break;
+                }
+            }
         }
     }
 }

@@ -86,9 +86,22 @@ namespace KursachDB
             conn.Close();
         }
 
-        public void SelectFields()
+        public void SelectFields(string filterRow)
         {
             throw new System.NotImplementedException();
+        }
+
+        public void SelectView()
+        {
+            Connect();
+            string stm = "SELECT * FROM view2";
+            MySqlDataAdapter mAdapter = new MySqlDataAdapter(stm, conn);
+            MySqlCommandBuilder mScomBuild = new MySqlCommandBuilder(mAdapter);
+            DataSet data = new DataSet();
+            mAdapter.Fill(data, "view2");
+            sel.dataGridView1.DataSource = data.Tables["view2"];
+
+            conn.Close();
         }
     }
 }
