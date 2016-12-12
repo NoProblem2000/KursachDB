@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Reports = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.UpdateBtn = new System.Windows.Forms.Button();
             this.InsertBtn = new System.Windows.Forms.Button();
@@ -38,14 +39,25 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.Reports);
             this.panel1.Controls.Add(this.DeleteBtn);
             this.panel1.Controls.Add(this.UpdateBtn);
             this.panel1.Controls.Add(this.InsertBtn);
             this.panel1.Controls.Add(this.SelectBtn);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(346, 97);
+            this.panel1.Size = new System.Drawing.Size(420, 111);
             this.panel1.TabIndex = 0;
+            // 
+            // Reports
+            // 
+            this.Reports.Location = new System.Drawing.Point(331, 78);
+            this.Reports.Name = "Reports";
+            this.Reports.Size = new System.Drawing.Size(75, 23);
+            this.Reports.TabIndex = 4;
+            this.Reports.Text = "Reports";
+            this.Reports.UseVisualStyleBackColor = true;
+            this.Reports.Click += new System.EventHandler(this.Reports_Click);
             // 
             // DeleteBtn
             // 
@@ -91,7 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 114);
+            this.ClientSize = new System.Drawing.Size(444, 133);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Меню";
@@ -107,6 +119,7 @@
         private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.Button InsertBtn;
         private System.Windows.Forms.Button SelectBtn;
+        private System.Windows.Forms.Button Reports;
 
     }
 }

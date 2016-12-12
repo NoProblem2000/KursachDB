@@ -107,7 +107,6 @@ namespace KursachDB
             Connect();
             string stm = "SELECT * FROM view1";
             MySqlDataAdapter mAdapter = new MySqlDataAdapter(stm, conn);
-            MySqlCommandBuilder mScomBuild = new MySqlCommandBuilder(mAdapter);
             DataSet data = new DataSet();
             mAdapter.Fill(data, "view1");
             sel.dataGridView1.DataSource = data.Tables["view1"];

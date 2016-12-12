@@ -8,6 +8,7 @@ namespace KursachDB
         Insert frm3;
         Update frm4;
         Delete frm5;
+        ItemsReport frm6;
         public Form1()
         {
             InitializeComponent();
@@ -36,5 +37,12 @@ namespace KursachDB
             frm5 = new Delete();
             frm5.Show();
         }
+
+        private void Reports_Click(object sender, System.EventArgs e)
+        {
+            frm6 = new ItemsReport();
+            frm6.Show();
+        }
+       
     }
 }

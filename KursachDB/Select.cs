@@ -13,13 +13,15 @@ namespace KursachDB
             {
                 DataSource = new List<string>()
                 {
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "6",
-                    "7"
+                    "Таблица поставщиков",
+                    "Таблица игр",
+                    "Таблица работников",
+                    "Таблица клиентов",
+                    "Таблица аксессуаров",
+                    "Таблица покупок клиентов",
+                    "Таблица поставок заводов",
+                    "Просмотр стоимости всех игр",
+                    "Просмотр заказов клиентов"
                 }
             };
             cmbxTables.DataSource = bindingSource;
@@ -33,7 +35,7 @@ namespace KursachDB
             {
                 switch (cmbxTables.Text)
                 {
-                    case "1":
+                    case "Таблица поставщиков":
                     {
                         TableSupplier tableSupplier = new TableSupplier(this);
                         tableSupplier.Select();
@@ -41,55 +43,55 @@ namespace KursachDB
                         break;
                     }
 
-                    case "2":
+                    case "Таблица игр":
                     {
                         TableGames tableGames = new TableGames(this);
                         tableGames.Select();
                         label2.Text = "Название игры";
                         break;
                     }
-                    case "3":
+                    case "Таблица работников":
                     {
                         TableWorkers tableWorkers = new TableWorkers(this);
                         tableWorkers.Select();
                         label2.Text = "Фамилия работника";
                         break;
                     }
-                    case "4":
+                    case "Таблица клиентов":
                     {
                         TableClient tableClient = new TableClient(this);
                         tableClient.Select();
                         label2.Text = "Фамилия клиента";
                         break;
                     }
-                    case "5":
+                    case "Таблица аксессуаров":
                     {
                         TableAccessory tableAccessory = new TableAccessory(this);
                         tableAccessory.Select();
                         label2.Text = "Название аксессуара";
                         break;
                     }
-                    case "6":
+                    case "Таблица покупок клиентов":
                     {
                         TableConnClient tableConnClient = new TableConnClient(this);
                         tableConnClient.Select();
                         break;
                     }
-                    case "7":
+                    case "Таблица поставок заводов":
                     {
                         TableConnSup tableConnSup = new TableConnSup(this);
                         tableConnSup.Select();
                         break;
                     }
-                    case "View1":
+                    case "Просмотр стоимости всех игр":
                     {
-                        TableGames tableGames = new TableGames();
+                        TableGames tableGames = new TableGames(this);
                         tableGames.SelectViews();
                         break;
                     }
-                    case "View2":
+                    case "Просмотр заказов клиентов":
                     {
-                        TableConnClient tableConnClient = new TableConnClient();
+                        TableConnClient tableConnClient = new TableConnClient(this);
                         tableConnClient.SelectView();
                         break;
                     }
@@ -102,32 +104,32 @@ namespace KursachDB
         {
             switch (cmbxTables.Text)
             {
-                case "1":
+                case "Таблица поставщиков":
                 {
                     TableSupplier tableSupplier = new TableSupplier(this);
                     tableSupplier.SelectFields(textBox1.Text);
                     break;
                 }
 
-                case "2":
+                case "Таблица игр":
                 {
                     TableGames tableGames = new TableGames(this);
                     tableGames.SelectFields(textBox1.Text);
                     break;
                 }
-                case "3":
+                case "Таблица работников":
                 {
                     TableWorkers tableWorkers = new TableWorkers(this);
                     tableWorkers.SelectFields(textBox1.Text);
                     break;
                 }
-                case "4":
+                case "Таблица клиентов":
                 {
                     TableClient tableClient = new TableClient(this);
                     tableClient.SelectFields(textBox1.Text);
                     break;
                 }
-                case "5":
+                case "Таблица аксессуаров":
                 {
                     TableAccessory tableAccessory = new TableAccessory(this);
                     tableAccessory.SelectFields(textBox1.Text);

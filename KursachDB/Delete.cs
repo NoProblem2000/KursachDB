@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace KursachDB
@@ -15,14 +13,14 @@ namespace KursachDB
             {
                 DataSource = new List<string>()
                 {
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "6",
-                    "7"
-                    
+                    "Таблица поставщиков",
+                    "Таблица игр",
+                    "Таблица работников",
+                    "Таблица клиентов",
+                    "Таблица аксессуаров",
+                    "Таблица покупок клиентов",
+                    "Таблица поставок заводов"
+
                 }
             };
             cmbxTables.DataSource = bindingSource;
@@ -34,7 +32,7 @@ namespace KursachDB
         {
             switch (cmbxTables.Text)
             {
-                case "1":
+                case "Таблица поставщиков":
                     {
                         #region TableSup
 
@@ -52,7 +50,7 @@ namespace KursachDB
                         #endregion
                     }
 
-                case "2":
+                case "Таблица игр":
                     {
                         #region TableGames
 
@@ -71,7 +69,7 @@ namespace KursachDB
                         #endregion
 
                     }
-                case "3":
+                case "Таблица работников":
                     {
                         #region TableWorkers
 
@@ -90,7 +88,7 @@ namespace KursachDB
                         #endregion
 
                     }
-                case "4":
+                case "Таблица клиентов":
                     {
                         #region TableClient
 
@@ -109,7 +107,7 @@ namespace KursachDB
                         #endregion
 
                     }
-                case "5":
+                case "Таблица аксессуаров":
                     {
                         #region TableAccessory
 
@@ -128,7 +126,7 @@ namespace KursachDB
                         #endregion
 
                     }
-                case "6":
+                case "Таблица покупок клиентов":
                     {
                         #region TableConnClient
 
@@ -148,7 +146,7 @@ namespace KursachDB
 
                     }
 
-                case "7":
+                case "Таблица поставок заводов":
                     {
                         #region TableConnSup
                         if (textBox1.Text == string.Empty )
@@ -179,7 +177,7 @@ namespace KursachDB
             {
                 switch (cmbxTables.Text)
                 {
-                    case "1":
+                    case "Таблица поставщиков":
                         {
                             #region Заголовки табл 1
 
@@ -189,7 +187,7 @@ namespace KursachDB
                             #endregion
 
                         }
-                    case "2":
+                    case "Таблица игр":
                         {
                             #region Заголовки табл 2
 
@@ -199,7 +197,7 @@ namespace KursachDB
                             #endregion
 
                         }
-                    case "3":
+                    case "Таблица работников":
                         {
                             #region Table 3
 
@@ -208,7 +206,7 @@ namespace KursachDB
 
                             #endregion
                         }
-                    case "4":
+                    case "Таблица клиентов":
                         {
                             #region Заголовки Табл4
 
@@ -217,7 +215,7 @@ namespace KursachDB
 
                             #endregion
                         }
-                    case "5":
+                    case "Таблица аксессуаров":
                         {
                             #region Table 5
 
@@ -227,7 +225,7 @@ namespace KursachDB
                             #endregion
                         }
 
-                    case "6":
+                    case "Таблица покупок клиентов":
                         {
                             #region TableConnClient
 
@@ -236,7 +234,7 @@ namespace KursachDB
                             #endregion
                         }
 
-                    case "7":
+                    case "Таблица поставок заводов":
                         {
                             #region TableConnSup
                             label2.Text = "УИД поставки";
